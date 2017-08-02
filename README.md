@@ -31,18 +31,13 @@ Topics:
 1. Persistent storage
 1. Golang example using hostPath
 
-
-# tc-kubernetes-virtualbox-macos
-
-Vagrant config to run a full local Kubernetes cluster using the source directory from your Mac under VMWare Fusion.
-
 ## Getting started
 
 On Mac
 
 ```bash
-git clone https://github.com/topconnector/tc-kubernetes-vmware-macos.git
-cd tc-kubernetes-vmware-macos
+git clone https://github.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos.git
+cd tc-kubernetes-vagrant-vmware-centos-macos
 cd single-machine
 ```
 
