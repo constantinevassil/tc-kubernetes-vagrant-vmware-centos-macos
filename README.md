@@ -36,6 +36,7 @@ Topics:
 On Mac
 
 ```bash
+xcode-select --install
 git clone https://github.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos.git
 cd tc-kubernetes-vagrant-vmware-centos-macos
 ```
