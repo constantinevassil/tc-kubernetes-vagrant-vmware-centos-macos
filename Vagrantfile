@@ -4,6 +4,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
 
+  # Using a preconfigured static address: 192.168.0.199
   config.vm.network "public_network" , bridge: 'en0: Ethernet' , ip: "192.168.0.199/21"#, netmask: "255.255.248.0"
   config.vm.provision :shell, path: "bootstrap.sh"
 
