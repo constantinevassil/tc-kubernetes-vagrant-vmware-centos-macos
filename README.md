@@ -32,5 +32,59 @@ Topics:
 1. Golang example using hostPath
 
 
+# tc-kubernetes-virtualbox-macos
+
+Vagrant config to run a full local Kubernetes cluster using the source directory from your Mac under VMWare Fusion.
+
+## Getting started
+
+On Mac
+
+```bash
+git clone https://github.com/topconnector/tc-kubernetes-vmware-macos.git
+cd tc-kubernetes-vmware-macos
+cd single-machine
+```
+
+You must have the following installed:
+
+* VMware Fusion (Pro) >= 8.5
+  
+  https://www.vmware.com/products/fusion/fusion-evaluation.html
+    
+* Vagrant >= 1.9.7
+
+  Download and install from https://www.vagrantup.com/.
+
+  Vagrant + VMware
+  
+  Download and install from https://www.vagrantup.com/vmware/index.html
+     
+```bash
+    vagrant plugin install vagrant-vmware-fusion
+    vagrant plugin license vagrant-vmware-fusion ~/license.lic
+```
+
+* run Virtual machine (VM)
+
+  Install by running: 
+  
+```bash
+    vagrant up --provider vmware_fusion
+```
+
+## Using kubeadm to create a cluster - single machine configuration. To schedule pods on master node.
+
+Kubernetes is hard to install without using third party tools. kubeadm is an official tool for simple deployment. 
+
+* Before you begin
+	1.	One or more virtual machines running Ubuntu 17.04+
+	1.	1GB or more of RAM per machine (any less will leave little room for your apps)
+	1.	Full network connectivity between all machines in the cluster
+
+* Objectives
+	* Install a secure Kubernetes cluster on your machines
+	* Install a pod network on the cluster so that application components (pods) can talk to each other
+	* Install a sample Golang application on the cluster
 
 
