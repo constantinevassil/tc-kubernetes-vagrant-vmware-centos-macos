@@ -43,7 +43,7 @@ cd tc-kubernetes-vagrant-vmware-centos-macos
 
 # NOTE:  
 1. Vagrantfile is using public static IP Address. Change to appropriate value.
-config.vm.network "public_network" , bridge: 'en0: Ethernet' , ip: "192.168.0.199/21"#, netmask: "255.255.248.0"
+config.vm.network "public_network" , bridge: 'en0: Ethernet' , ip: "192.168.0.199", netmask: "255.255.248.0"
 1. bootstrap.sh is using this static IP Address to initialize Kubernetes. . Change to same as in Vagrantfile.
 kubeadm init --apiserver-advertise-address 192.168.0.199 --pod-network-cidr 10.244.0.0/16 --token 8c2350.f55343444a6ffc46
 
