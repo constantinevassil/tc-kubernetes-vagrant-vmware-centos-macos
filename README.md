@@ -38,7 +38,6 @@ On Mac
 ```bash
 git clone https://github.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos.git
 cd tc-kubernetes-vagrant-vmware-centos-macos
-cd single-machine
 ```
 
 You must have the following installed:
