@@ -133,5 +133,33 @@ kubectl apply -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-va
 # kubectl create -f heapster/deploy/kube-config/influxdb/
 # kubectl create -f heapster/deploy/kube-config/rbac/heapster-rbac.yaml
 
+# kubectl get pods --all-namespaces
+# NAMESPACE     NAME                                     READY     STATUS    RESTARTS   AGE
+# kube-system   etcd-tc-k-vm-master                      1/1       Running   0          5m
+# kube-system   heapster-84017538-2gnm2                  1/1       Running   0          42s
+# kube-system   kube-apiserver-tc-k-vm-master            1/1       Running   0          5m
+# kube-system   kube-controller-manager-tc-k-vm-master   1/1       Running   1          6m
+# kube-system   kube-dns-2425271678-cqlpt                3/3       Running   0          6m
+# kube-system   kube-flannel-ds-3jwjn                    2/2       Running   0          4m
+# kube-system   kube-proxy-lcnqq                         1/1       Running   0          6m
+# kube-system   kube-scheduler-tc-k-vm-master            1/1       Running   0          5m
+# kube-system   kubernetes-dashboard-3313488171-2zt1r    1/1       Running   0          2m
+# kube-system   monitoring-grafana-1500490092-r3hbd      1/1       Running   0          43s
+# kube-system   monitoring-influxdb-1870447071-9cdjv     1/1       Running   0          42s
 
+# kubectl get svc --all-namespaces
+# NAMESPACE     NAME                   CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
+# default       kubernetes             10.96.0.1        <none>        443/TCP         6m
+# kube-system   heapster               10.104.101.10    <none>        80/TCP          57s
+# kube-system   kube-dns               10.96.0.10       <none>        53/UDP,53/TCP   6m
+# kube-system   kubernetes-dashboard   10.101.14.170    <none>        80/TCP          3m
+# kube-system   monitoring-grafana     10.103.100.104   <nodes>       80:30180/TCP    58s
+# kube-system   monitoring-influxdb    10.108.159.65    <none>        8086/TCP        57s
 
+# monitoring-grafana: 30180 
+# kubectl describe nodes:
+# Addresses:
+#  InternalIP:	192.168.232.164
+#  Hostname:	tc-k-vm-master
+
+# In the browser: 192.168.232.164:30180
