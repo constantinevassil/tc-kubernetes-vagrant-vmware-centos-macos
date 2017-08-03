@@ -131,7 +131,7 @@ kubectl apply -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-va
 #     k8s-app: grafana
 
 # kubectl create -f heapster/deploy/kube-config/influxdb/
-# kubectl create -f heapster/deploy/kube-config/rbac/heapster-rbac.yaml/
+# kubectl create -f heapster/deploy/kube-config/rbac/heapster-rbac.yaml
 
 
 
