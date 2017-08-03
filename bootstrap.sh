@@ -42,7 +42,26 @@ kubectl create -f https://rawgit.com/kubernetes/dashboard/master/src/deploy/kube
 kubectl apply -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/admin-role.yml
 
 #--- Do this manually
----
+    
+#  ---   
+# vagrant ssh
+# sudo mkdir -p $HOME/.kube
+# sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+# sudo chown $(id -u):$(id -g) $HOME/.kube/config
+# kubectl get nodes
+# kubectl get pods -o wide --all-namespaces
+
+# sudo cat /etc/kubernetes/admin.conf > /vagrant/admin.conf
+
+# in the host:
+# sudo mkdir -p $HOME/.kube
+# sudo cp -i ./admin.conf $HOME/.kube/config
+# sudo chown $(id -u):$(id -g) $HOME/.kube/config
+# sudo cat $HOME/.kube/config
+
+# git clone https://github.com/kubernetes/heapster.git
+# EDIT: add
+# type: NodePort
 # grafana.yaml
 # apiVersion: extensions/v1beta1
 # kind: Deployment
@@ -110,25 +129,6 @@ kubectl apply -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-va
 #     targetPort: 3000
 #   selector:
 #     k8s-app: grafana
-    
-#  ---   
-# vagrant ssh
-# sudo mkdir -p $HOME/.kube
-# sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-# sudo chown $(id -u):$(id -g) $HOME/.kube/config
-# kubectl get nodes
-# kubectl get pods -o wide --all-namespaces
-
-# sudo cat /etc/kubernetes/admin.conf > /vagrant/admin.conf
-
-# in the host:
-# sudo mkdir -p $HOME/.kube
-# sudo cp -i ./admin.conf $HOME/.kube/config
-# sudo chown $(id -u):$(id -g) $HOME/.kube/config
-# sudo cat $HOME/.kube/config
-
-# git clone https://github.com/kubernetes/heapster.git
-# EDIT:
 
 # kubectl create -f heapster/deploy/kube-config/influxdb/
 # kubectl create -f heapster/deploy/kube-config/rbac/heapster-rbac.yaml/
