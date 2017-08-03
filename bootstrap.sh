@@ -48,6 +48,14 @@ kubectl apply -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-va
 # sudo mkdir -p $HOME/.kube
 # sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 # sudo chown $(id -u):$(id -g) $HOME/.kube/config
-# sudo cat /etc/kubernetes/admin.conf > /vagrant/admin.conf
 # kubectl get nodes
 # kubectl get pods -o wide --all-namespaces
+
+# sudo cat /etc/kubernetes/admin.conf > /vagrant/admin.conf
+
+# in the host:
+# sudo mkdir -p $HOME/.kube
+# sudo cp -i ./admin.conf $HOME/.kube/config
+# sudo chown $(id -u):$(id -g) $HOME/.kube/config
+# sudo cat $HOME/.kube/config
+
