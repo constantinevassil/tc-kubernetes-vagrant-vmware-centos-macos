@@ -28,6 +28,10 @@ sysctl net.bridge.bridge-nf-call-ip6tables=1
 echo "192.168.0.199	tc-centos-master-hatc2" >> /etc/hosts
 kubeadm init --apiserver-advertise-address 192.168.0.199 --pod-network-cidr 10.244.0.0/16 --token 8c2350.f55343444a6ffc46
 
+sudo mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
