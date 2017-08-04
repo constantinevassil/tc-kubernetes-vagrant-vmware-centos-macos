@@ -159,3 +159,192 @@ Install Kubernetes:
 vagrant provision
 ```
 
+## Testing kubernetes from inside the master
+
+### 1. Create a deployment that manages a Pod. 
+
+deploy topconnector/tc-helloworld-go-ws
+
+```bash
+vagrant ssh master
+vagrant@tc-k-vm-master:~$ kubectl run tc-helloworld-go-ws --image=topconnector/tc-helloworld-go-ws:v1 --port=8080 --record
+```
+
+Check rollout status:
+
+```bash
+vagrant@tc-k-vm-master:~$ kubectl rollout status deployment/tc-helloworld-go-ws
+deployment "tc-helloworld-go-ws" successfully rolled out
+```
+
+View the Deployment:
+```bash
+vagrant@tc-k-vm-master:~$ kubectl get deployments
+NAME                      DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+tc-helloworld-go-ws          1         1         1            1           3m
+```
+
+View the Pods:
+
+```bash
+vagrant@tc-k-vm-master:~$ kubectl get pods -o wide
+NAME                                       READY     STATUS    RESTARTS   AGE       IP           NODE
+tc-helloworld-go-ws-495672996-nt1m9           1/1       Running   0          5m        10.244.1.4   master
+```
+
+### 2. Scaling:
+```bash
+vagrant@tc-k-vm-master:~$ kubectl scale --replicas=2 deployment/tc-helloworld-go-ws --record
+deployment "tc-helloworld-go-ws" scaled
+```
+
+### 3. Create a service:
+```bash
+vagrant@tc-k-vm-master:~$ kubectl expose deployment tc-helloworld-go-ws --type=NodePort
+service "tc-helloworld-go-ws" exposed
+```
+### 4. Access the service:
+
+1. get node "master"'s IP address:
+```bash
+vagrant@tc-k-vm-master:~$ kubectl describe nodes
+
+...
+Addresses:
+  InternalIP:	192.168.232.137
+  Hostname:	master...  
+```
+
+IP address:192.168.44.10
+
+
+2. get service port number
+
+View the services:
+```bash
+vagrant@tc-k-vm-master:~$ kubectl get services
+NAME                  CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes            10.96.0.1       <none>        443/TCP          8m
+tc-helloworld-go-ws   10.104.31.142   <nodes>       8080:30947/TCP   1m
+```
+service port number:32658 
+
+### 5. Test the service:
+
+The http address of the service: 192.168.232.137:30947
+
+```bash
+vagrant@tc-k-vm-master:~$ curl http://192.168.232.137:30947
+Hello World from Go in minimal Docker container(4.28MB) v.1.0, it took 78ns to run
+```
+
+### 6. Update your app to version 2
+
+```bash
+vagrant@tc-k-vm-master:~$ kubectl set image deployment/tc-helloworld-go-ws tc-helloworld-go-ws=topconnector/tc-helloworld-go-ws:v2 --record
+deployment "tc-helloworld-go-ws" image updated
+vagrant@tc-k-vm-master:~$ curl http://192.168.232.137:30947
+Hello World from Go in minimal Docker container(4.28MB) v.2.0, it took 68ns to run
+```
+
+### 7. Rollback your app to version 1
+
+```bash
+vagrant@tc-k-vm-master:~$ kubectl rollout undo deployment tc-helloworld-go-ws
+deployment "tc-helloworld-go-ws" rolled back
+vagrant@tc-k-vm-master:~$ curl http://192.168.232.137:30947
+Hello World from Go in minimal Docker container(4.28MB) v.1.0, it took 68ns to run
+```
+
+### 8. Rollback your app to version 2
+
+```bash
+vagrant@tc-k-vm-master:~$ kubectl rollout undo deployment tc-helloworld-go-ws
+deployment "tc-helloworld-go-ws" rolled back
+vagrant@tc-k-vm-master:~$ curl http://192.168.232.137:30947
+Hello World from Go in minimal Docker container(4.28MB) v.2.0, it took 68ns to run
+```
+
+## Access your cluster from your local machine
+
+### 1. Get admin.conf from master
+
+Get admin.conf from /etc/kubernetes on master and copy to your local machine's current folder:
+
+```bash
+vagrant@tc-k-vm-master:~$ sudo cat /etc/kubernetes/admin.conf > /vagrant/admin.conf
+exit
+```
+
+on your your local machine:
+
+copy admin.conf to $HOME/.kube/config and prepare to use locally.
+
+```bash
+sudo mkdir -p $HOME/.kube
+sudo cp -i ./admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+sudo cat $HOME/.kube/config
+```
+
+
+### 2. Install and Set Up kubectl on your local machine
+
+Now in order for you to actually access your cluster from your Mac you need kubectl locally.
+
+Download the latest release with the command:
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
+
+Make the kubectl binary executable.
+
+chmod +x ./kubectl
+
+Move the binary in to your PATH.
+
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+### 3. Check the master configuration 
+
+Get nodes:
+
+```bash
+kubectl get nodes
+AME      STATUS    AGE       VERSION
+master    Ready     11h       v1.7.1
+```
+Get pods:
+
+```bash
+kubectl get pods
+NAME                                   READY     STATUS    RESTARTS   AGE
+tc-helloworld-go-ws-1724924830-gpf9c   1/1       Running   0          11h
+tc-helloworld-go-ws-1724924830-wv4f1   1/1       Running   0          11h
+```
+
+Get services:
+
+```bash
+kubectl get services
+NAME                  CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes            10.96.0.1       <none>        443/TCP          11h
+tc-helloworld-go-ws   10.105.98.177   <nodes>       8080:30947/TCP   11h
+```
+### On local machine
+
+Run proxy to use dashboard locally:
+
+```bash
+kubectl proxy
+```
+
+Proxy should be listening on 127.0.0.1:8001. 
+
+Point your browser to http://127.0.0.1:8001/ui
+
+Access the service from local machine:
+
+```bash
+curl http://192.168.232.137:30947
+```
+
