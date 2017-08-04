@@ -272,7 +272,7 @@ Hello World from Go in minimal Docker container(4.28MB) v.2.0, it took 68ns to r
 Get admin.conf from /etc/kubernetes on master and copy to your local machine's current folder:
 
 ```bash
-vagrant@tc-k-vm-master:~$ sudo cat /etc/kubernetes/admin.conf > /vagrant/admin.conf
+vagrant@tc-k-vm-master:~$ sudo cat /etc/kubernetes/admin.conf > /vagrant2/admin.conf
 exit
 ```
 
