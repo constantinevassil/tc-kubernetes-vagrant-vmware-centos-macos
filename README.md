@@ -76,6 +76,14 @@ kubeadm init --apiserver-advertise-address 192.168.0.199 --pod-network-cidr 10.2
     vagrant up --provider vmware_fusion
 ```
 
+## Enabling shared folders with Vagrant’s VMware provider
+
+Updated CentOS Vagrant Images Available (v1707.01)
+https://seven.centos.org/2017/08/updated-centos-vagrant-images-available-v1707-01/
+
+Installing open-vm-tools is not enough for enabling shared folders with Vagrant’s VMware provider. Please follow the detailed instructions in https://github.com/mvermaes/centos-vmware-tools (updated for this release).
+
+
 ## Using kubeadm to create a cluster - single machine configuration. To schedule pods on master node.
 
 Kubernetes is hard to install without using third party tools. kubeadm is an official tool for simple deployment. 
