@@ -47,8 +47,7 @@ cd tc-kubernetes-vagrant-vmware-centos-macos
 config.vm.network "public_network" , bridge: 'en0: Ethernet' , ip: "192.168.0.199", netmask: "255.255.248.0"
 1. bootstrap.sh is using this static IP Address to initialize Kubernetes. . Change to same as in Vagrantfile.
 kubeadm init --apiserver-advertise-address 192.168.0.199 --pod-network-cidr 10.244.0.0/16 --token 8c2350.f55343444a6ffc46
-
-
+1. Enabling shared folders with Vagrant’s VMware provider breaks Flannel network in Kubernetes. Weave network is used instead.
 
 # You must have the following installed:
 
