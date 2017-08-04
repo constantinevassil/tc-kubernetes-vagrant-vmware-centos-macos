@@ -348,3 +348,12 @@ Access the service from local machine:
 curl http://192.168.232.137:30947
 ```
 
+Open Scope in Your Browser
+
+```bash
+kubectl port-forward -n kube-system "$(kubectl get -n kube-system pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}')" 4040
+```
+
+The URL is: 
+http://localhost:4040
+
