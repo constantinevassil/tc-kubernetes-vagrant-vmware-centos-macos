@@ -30,6 +30,7 @@ Topics:
 1. Access Service On local machine
 1. Persistent storage
 1. Golang example using hostPath
+1. Installing Graphana
 
 ## Getting started
 
