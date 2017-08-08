@@ -11,7 +11,7 @@ Topics:
 1. Mac computer
 1. VMWare Fusion 
 1. Vagrant
-1. Ubuntu 17.04+
+1. CentOS 7+
 1. kubeadm
 1. Flannel
 1. Create a deployment that manages a Pod
