@@ -3,8 +3,6 @@
 Kubernetes makes it trivial for anyone to easily build and scale [Elasticsearch](http://www.elasticsearch.org/) clusters. Here, you'll find how to do so.
 Current Elasticsearch version is `1.7.1`.
 
-[A more robust example that follows Elasticsearch best-practices of separating nodes concern is also available](production_cluster/README.md).
-
 NOTE:  Current pod descriptors use an `emptyDir` for storing data in each data node container. This is meant to be for the sake of simplicity and [should be adapted according to your storage needs](https://kubernetes.io/docs/design/persistent-storage.md).
 
 ## Docker image
