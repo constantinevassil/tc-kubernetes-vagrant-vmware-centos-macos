@@ -134,6 +134,8 @@ Uncomment:
 Comment it out:
 
   config.vm.provision :shell, path: "bootstrap.sh"
+  
+  config.vm.synced_folder ".", "/vagrant2"
 
 Install shared folders
 
