@@ -147,7 +147,7 @@ Install shared folders
 vagrant up --provider vmware_fusion
 ```
 
-Uncomment:
+When finished, uncomment:
 
 ```bash
  config.vm.synced_folder ".", "/vagrant2"
