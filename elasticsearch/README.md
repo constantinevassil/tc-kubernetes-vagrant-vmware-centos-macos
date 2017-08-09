@@ -16,7 +16,7 @@ Let's kickstart our cluster with 1 instance of Elasticsearch.
 ```
 sudo kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch/service-account.yaml
 sudo kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch/es-svc.yaml
-sudo kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch/elasticsearch/es-rc.yaml
+sudo kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch/es-rc.yaml
 ```
 
 Let's see if it worked:
