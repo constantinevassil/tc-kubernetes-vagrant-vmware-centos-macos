@@ -1,7 +1,7 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: es
+  name: elasticsearch-deployment
   labels:
     component: elasticsearch
 spec:
