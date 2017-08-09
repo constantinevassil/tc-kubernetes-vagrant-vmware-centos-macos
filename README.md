@@ -18,6 +18,7 @@ Topics:
 1. Grafana
 1. Heapster
 1. Influxdb
+1. Weave Scope
 1. Create a deployment that manages a Pod
 1. Scaling
 1. Create a service
