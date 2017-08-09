@@ -234,7 +234,24 @@ vagrant@tc-centos-master-hatc2:~$ sudo mkdir -p $HOME/.kube
 vagrant@tc-centos-master-hatc2:~$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 vagrant@tc-centos-master-hatc2:~$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 vagrant@tc-centos-master-hatc2:~$ kubectl get nodes
+NAME                     STATUS    AGE       VERSION
+tc-centos-master-hatc2   Ready     5m        v1.7.3
 vagrant@tc-centos-master-hatc2:~$ kubectl get pods -o wide --all-namespaces
+NAMESPACE     NAME                                             READY     STATUS    RESTARTS   AGE       IP          NODE
+kube-system   etcd-tc-centos-master-hatc2                      1/1       Running   0          4m        10.0.1.58   tc-centos-master-hatc2
+kube-system   heapster-84017538-cwlld                          1/1       Running   0          4m        10.32.0.6   tc-centos-master-hatc2
+kube-system   kube-apiserver-tc-centos-master-hatc2            1/1       Running   0          3m        10.0.1.58   tc-centos-master-hatc2
+kube-system   kube-controller-manager-tc-centos-master-hatc2   1/1       Running   0          4m        10.0.1.58   tc-centos-master-hatc2
+kube-system   kube-dns-2425271678-2n4xh                        3/3       Running   0          4m        10.32.0.4   tc-centos-master-hatc2
+kube-system   kube-proxy-df67l                                 1/1       Running   0          4m        10.0.1.58   tc-centos-master-hatc2
+kube-system   kube-scheduler-tc-centos-master-hatc2            1/1       Running   0          4m        10.0.1.58   tc-centos-master-hatc2
+kube-system   kubernetes-dashboard-3313488171-29ssr            1/1       Running   0          4m        10.32.0.2   tc-centos-master-hatc2
+kube-system   monitoring-grafana-1500490092-7gvg7              1/1       Running   0          4m        10.32.0.7   tc-centos-master-hatc2
+kube-system   monitoring-influxdb-1870447071-f4w3s             1/1       Running   0          4m        10.32.0.5   tc-centos-master-hatc2
+kube-system   weave-net-s7v42                                  2/2       Running   1          4m        10.0.1.58   tc-centos-master-hatc2
+kube-system   weave-scope-agent-j5624                          1/1       Running   0          4m        10.0.1.58   tc-centos-master-hatc2
+kube-system   weave-scope-app-2536107919-rz8nt                 1/1       Running   0          4m        10.32.0.3   tc-centos-master-hatc2
+[
 ```
 
 ### 1. Create a deployment that manages a Pod. 
