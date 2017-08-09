@@ -31,3 +31,12 @@ deploy/es-master   1         1         1            1           53s
 NAME                           READY     STATUS    RESTARTS   AGE
 po/es-master-298393659-zk7s4   1/1       Running   0          53s
 ```
+
+```bash
+kubectl logs po/es-master-298393659-zk7s4
+```
+
+```bash
+kubectl get svc elasticsearch
+```
+
