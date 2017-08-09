@@ -129,13 +129,17 @@ end
 
 Uncomment:
 
+```bash
   config.vm.provision :shell, path: "shared.sh"
+```
 
 Comment it out:
 
+```bash
   config.vm.provision :shell, path: "bootstrap.sh"
   
   config.vm.synced_folder ".", "/vagrant2"
+```
 
 Install shared folders
 
@@ -145,15 +149,21 @@ vagrant up --provider vmware_fusion
 
 Uncomment:
 
+```bash
  config.vm.synced_folder ".", "/vagrant2"
+```
 
 Comment it out:
 
+```bash
   config.vm.provision :shell, path: "shared.sh"
+```
 
 Uncomment:
 
+```bash
   config.vm.provision :shell, path: "bootstrap.sh"
+```
 
 Install Kubernetes:
 
@@ -180,6 +190,7 @@ deployment "tc-helloworld-go-ws" successfully rolled out
 ```
 
 View the Deployment:
+
 ```bash
 vagrant@tc-k-vm-master:~$ kubectl get deployments
 NAME                      DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
