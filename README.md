@@ -13,7 +13,11 @@ Topics:
 1. Vagrant
 1. CentOS 7+
 1. kubeadm
-1. Flannel
+1. Dashboard
+1. Weave net
+1. Grafana
+1. Heapster
+1. Influxdb
 1. Create a deployment that manages a Pod
 1. Scaling
 1. Create a service
@@ -30,7 +34,7 @@ Topics:
 1. Access Service On local machine
 1. Persistent storage
 1. Golang example using hostPath
-1. Installing Grafana
+
 
 ## Getting started
 
