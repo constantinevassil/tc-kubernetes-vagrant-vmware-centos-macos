@@ -1,4 +1,5 @@
 # Elasticsearch for Kubernetes
+https://github.com/kubernetes/examples/blob/master/staging/elasticsearch/README.md
 
 Kubernetes makes it trivial for anyone to easily build and scale [Elasticsearch](http://www.elasticsearch.org/) clusters. Here, you'll find how to do so.
 Current Elasticsearch version is `1.7.1`.
