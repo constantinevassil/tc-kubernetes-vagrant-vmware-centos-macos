@@ -68,14 +68,6 @@ kubeadm init --apiserver-advertise-address 192.168.0.199 --pod-network-cidr 10.2
     vagrant plugin license vagrant-vmware-fusion ~/license.lic
 ```
 
-* run Virtual machine (VM)
-
-  Install by running: 
-  
-```bash
-    vagrant up --provider vmware_fusion
-```
-
 ## Enabling shared folders with Vagrant’s VMware provider
 
 Updated CentOS Vagrant Images Available (v1707.01)
