@@ -14,6 +14,7 @@ The [pre-built image](https://github.com/pires/docker-elasticsearch-kubernetes) 
 
 Let's kickstart our cluster with 1 instance of Elasticsearch.
 
+### NOTE: Modified for NodePort
 ```
 sudo kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch/service-account.yaml
 sudo kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch/es-svc.yaml
