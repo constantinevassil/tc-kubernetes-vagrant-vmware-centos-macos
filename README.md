@@ -233,21 +233,21 @@ vagrant provision
 deploy topconnector/tc-helloworld-go-ws
 
 ```bash
-vagrant ssh master
-vagrant@tc-k-vm-master:~$ kubectl run tc-helloworld-go-ws --image=topconnector/tc-helloworld-go-ws:v1 --port=8080 --record
+vagrant ssh
+vagrant@tc-centos-master-hatc2:~$ kubectl run tc-helloworld-go-ws --image=topconnector/tc-helloworld-go-ws:v1 --port=8080 --record
 ```
 
 Check rollout status:
 
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl rollout status deployment/tc-helloworld-go-ws
+vagrant@tc-centos-master-hatc2:~$ kubectl rollout status deployment/tc-helloworld-go-ws
 deployment "tc-helloworld-go-ws" successfully rolled out
 ```
 
 View the Deployment:
 
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl get deployments
+vagrant@tc-centos-master-hatc2:~$ kubectl get deployments
 NAME                      DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 tc-helloworld-go-ws          1         1         1            1           3m
 ```
@@ -255,27 +255,27 @@ tc-helloworld-go-ws          1         1         1            1           3m
 View the Pods:
 
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl get pods -o wide
+vagrant@tc-centos-master-hatc2:~$ kubectl get pods -o wide
 NAME                                       READY     STATUS    RESTARTS   AGE       IP           NODE
 tc-helloworld-go-ws-495672996-nt1m9           1/1       Running   0          5m        10.244.1.4   master
 ```
 
 ### 2. Scaling:
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl scale --replicas=2 deployment/tc-helloworld-go-ws --record
+vagrant@tc-centos-master-hatc2:~$ kubectl scale --replicas=2 deployment/tc-helloworld-go-ws --record
 deployment "tc-helloworld-go-ws" scaled
 ```
 
 ### 3. Create a service:
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl expose deployment tc-helloworld-go-ws --type=NodePort
+vagrant@tc-centos-master-hatc2:~$ kubectl expose deployment tc-helloworld-go-ws --type=NodePort
 service "tc-helloworld-go-ws" exposed
 ```
 ### 4. Access the service:
 
 1. get node "master"'s IP address:
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl describe nodes
+vagrant@tc-centos-master-hatc2:~$ kubectl describe nodes
 
 ...
 Addresses:
@@ -290,7 +290,7 @@ IP address:192.168.44.10
 
 View the services:
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl get services
+vagrant@tc-centos-master-hatc2:~$ kubectl get services
 NAME                  CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 kubernetes            10.96.0.1       <none>        443/TCP          8m
 tc-helloworld-go-ws   10.104.31.142   <nodes>       8080:30947/TCP   1m
@@ -302,34 +302,34 @@ service port number:32658
 The http address of the service: 192.168.232.137:30947
 
 ```bash
-vagrant@tc-k-vm-master:~$ curl http://192.168.232.137:30947
+vagrant@tc-centos-master-hatc2:~$ curl http://192.168.232.137:30947
 Hello World from Go in minimal Docker container(4.28MB) v.1.0, it took 78ns to run
 ```
 
 ### 6. Update your app to version 2
 
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl set image deployment/tc-helloworld-go-ws tc-helloworld-go-ws=topconnector/tc-helloworld-go-ws:v2 --record
+vagrant@tc-centos-master-hatc2:~$ kubectl set image deployment/tc-helloworld-go-ws tc-helloworld-go-ws=topconnector/tc-helloworld-go-ws:v2 --record
 deployment "tc-helloworld-go-ws" image updated
-vagrant@tc-k-vm-master:~$ curl http://192.168.232.137:30947
+vagrant@tc-centos-master-hatc2:~$ curl http://192.168.232.137:30947
 Hello World from Go in minimal Docker container(4.28MB) v.2.0, it took 68ns to run
 ```
 
 ### 7. Rollback your app to version 1
 
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl rollout undo deployment tc-helloworld-go-ws
+vagrant@tc-centos-master-hatc2:~$ kubectl rollout undo deployment tc-helloworld-go-ws
 deployment "tc-helloworld-go-ws" rolled back
-vagrant@tc-k-vm-master:~$ curl http://192.168.232.137:30947
+vagrant@tc-centos-master-hatc2:~$ curl http://192.168.232.137:30947
 Hello World from Go in minimal Docker container(4.28MB) v.1.0, it took 68ns to run
 ```
 
 ### 8. Rollback your app to version 2
 
 ```bash
-vagrant@tc-k-vm-master:~$ kubectl rollout undo deployment tc-helloworld-go-ws
+vagrant@tc-centos-master-hatc2:~$ kubectl rollout undo deployment tc-helloworld-go-ws
 deployment "tc-helloworld-go-ws" rolled back
-vagrant@tc-k-vm-master:~$ curl http://192.168.232.137:30947
+vagrant@tc-centos-master-hatc2:~$ curl http://192.168.232.137:30947
 Hello World from Go in minimal Docker container(4.28MB) v.2.0, it took 68ns to run
 ```
 
@@ -340,7 +340,7 @@ Hello World from Go in minimal Docker container(4.28MB) v.2.0, it took 68ns to r
 Get admin.conf from /etc/kubernetes on master and copy to your local machine's current folder:
 
 ```bash
-vagrant@tc-k-vm-master:~$ sudo cat /etc/kubernetes/admin.conf > /vagrant2/admin.conf
+vagrant@tc-centos-master-hatc2:~$ sudo cat /etc/kubernetes/admin.conf > /vagrant2/admin.conf
 exit
 ```
 
