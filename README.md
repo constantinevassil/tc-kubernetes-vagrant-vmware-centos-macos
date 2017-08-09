@@ -157,6 +157,64 @@ Uncomment:
   config.vm.provision :shell, path: "bootstrap.sh"
 ```
 
+Login to VM:
+
+```bash
+  vagrant ssh
+```
+
+Get IP Address:
+
+```bash
+[vagrant@tc-centos-master-hatc2 ~]$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 00:0c:29:48:38:7e brd ff:ff:ff:ff:ff:ff
+    inet 192.168.183.144/24 brd 192.168.183.255 scope global dynamic eth0
+       valid_lft 1584sec preferred_lft 1584sec
+    inet6 fe80::20c:29ff:fe48:387e/64 scope link
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 00:0c:29:48:38:88 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.1.58/24 brd 10.0.1.255 scope global dynamic eth1
+       valid_lft 86184sec preferred_lft 86184sec
+    inet6 fe80::20c:29ff:fe48:3888/64 scope link
+       valid_lft forever preferred_lft forever
+```
+       
+IP Address: 10.0.1.58 
+
+Change in Vagrantfile:
+
+```bash
+  config.vm.network "public_network" , bridge: 'en0: Ethernet' #, ip: "192.168.0.199", netmask: "255.255.248.0"
+```
+to
+
+```bash
+  config.vm.network "public_network" , bridge: 'en0: Ethernet' , ip: "10.0.1.58", netmask: "255.255.255.0"
+```
+
+Change in bootstrap.sh:
+
+```bash
+echo "192.168.0.199	tc-centos-master-hatc2" >> /etc/hosts
+kubeadm init --apiserver-advertise-address 192.168.0.199 --pod-network-cidr 10.244.0.0/16 --token 8c2350.f55343444a6ffc46
+```
+
+to 
+
+```bash
+echo "10.0.1.58 	tc-centos-master-hatc2" >> /etc/hosts
+kubeadm init --apiserver-advertise-address 10.0.1.58  --pod-network-cidr 10.244.0.0/16 --token 8c2350.f55343444a6ffc46
+```
+
+
 Install Kubernetes:
 
 ```bash
