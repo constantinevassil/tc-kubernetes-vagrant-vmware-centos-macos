@@ -228,6 +228,15 @@ vagrant provision
 
 ## Testing kubernetes from inside the master
 
+```bash
+vagrant ssh
+vagrant@tc-centos-master-hatc2:~$ sudo mkdir -p $HOME/.kube
+vagrant@tc-centos-master-hatc2:~$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+vagrant@tc-centos-master-hatc2:~$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+vagrant@tc-centos-master-hatc2:~$ kubectl get nodes
+vagrant@tc-centos-master-hatc2:~$ kubectl get pods -o wide --all-namespaces
+```
+
 ### 1. Create a deployment that manages a Pod. 
 
 deploy topconnector/tc-helloworld-go-ws
