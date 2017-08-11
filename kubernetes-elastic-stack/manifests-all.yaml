@@ -59,14 +59,14 @@ data:
     ################################################################
 
     ## GC configuration
-    -XX:+UseConcMarkSweepGC
-    -XX:CMSInitiatingOccupancyFraction=75
-    -XX:+UseCMSInitiatingOccupancyOnly
+    #-XX:+UseConcMarkSweepGC
+    #-XX:CMSInitiatingOccupancyFraction=75
+    #-XX:+UseCMSInitiatingOccupancyOnly
 
     ## optimizations
 
     # disable calls to System#gc
-    -XX:+DisableExplicitGC
+    #-XX:+DisableExplicitGC
 
     # pre-touch memory pages used by the JVM during initialization
     -XX:+AlwaysPreTouch
@@ -253,8 +253,8 @@ spec:
     spec:
       containers:
       - name: elasticsearch
-        image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
-        imagePullPolicy: IfNotPresent
+        image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+        imagePullPolicy: Always
         # workarounds until https://github.com/kubernetes/kubernetes/issues/30120
         env:
         - name: cluster_name
@@ -267,8 +267,10 @@ spec:
         #   value: 127.0.0.1
         # - name: discovery.zen.ping.unicast.hosts
         #   value: elasticsearch_other
+        #- name: "ES_JAVA_OPTS"
+        #  value: "-Xms1g -Xmx1g"
         - name: "ES_JAVA_OPTS"
-          value: "-Xms1g -Xmx1g"
+          value: "-Xms512m -Xms512m"
         ports:
         - containerPort: 9200
           name: api
