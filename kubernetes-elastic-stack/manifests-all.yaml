@@ -236,7 +236,7 @@ spec:
       labels:
         component: elasticsearch
         role: master
-      annotations:
+    #  annotations:
         # see https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
         # and https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html#mlockall
     #     pod.beta.kubernetes.io/init-containers: '[
@@ -250,7 +250,7 @@ spec:
     #         }
     #       }
     #     ]'
-    # spec:
+    spec:
       containers:
       - name: elasticsearch
         image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
