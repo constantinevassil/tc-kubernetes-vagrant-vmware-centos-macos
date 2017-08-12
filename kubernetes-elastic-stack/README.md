@@ -34,6 +34,11 @@ sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-
 sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/kubernetes-elastic-stack/kibana-deployment.yaml
 ```
 
+### kibana-service.yaml
+
+```bash
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/kubernetes-elastic-stack/kibana-service.yaml
+```
 
 
 
