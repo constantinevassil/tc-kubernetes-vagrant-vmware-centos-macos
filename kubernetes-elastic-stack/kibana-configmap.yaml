@@ -6,5 +6,5 @@ metadata:
 data:
   elasticsearch.yml: |
     cluster.name: ${cluster_name}
-   server.host: ${SERVER_HOST}
+    server.host: ${SERVER_HOST}
     elasticsearch.url: ${ELASTICSEARCH_URL}
