@@ -97,8 +97,8 @@ spec:
             - SYS_RESOURCE
         # FIXME add probes
         volumeMounts:
-        #- name: config
-        #  mountPath: /usr/share/elasticsearch/config
+        - name: config
+          mountPath: /usr/share/elasticsearch/config
         - name: data
           mountPath: /usr/share/elasticsearch/data
       volumes:
