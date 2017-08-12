@@ -102,9 +102,9 @@ spec:
         - name: data
           mountPath: /usr/share/elasticsearch/data
       volumes:
-      #- name: config
-      #  configMap:
-      #    name: elasticsearch
+      - name: config
+        configMap:
+          name: elasticsearch
       - name: "data"
         emptyDir:
           medium: ""
