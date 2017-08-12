@@ -23,16 +23,16 @@ spec:
             cpu: 100m
           requests:
             cpu: 100m
-        volumeMounts:
-        - name: config
-          mountPath: /usr/share/kibana/config
+        #volumeMounts:
+        #- name: config
+        #  mountPath: /usr/share/kibana/config
         env:
         - name: "CLUSTER_NAME"
           value: "kubernetes-cluster"
         - name: "SERVER_HOST"
           value: "10.0.1.67"
         - name: "ELASTICSEARCH_URL"
-          value: "http://localhost:9200"
+          value: "http://10.0.1.67:32056"
         ports:
         - containerPort: 5601
           name: ui
