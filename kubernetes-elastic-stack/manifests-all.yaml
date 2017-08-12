@@ -221,7 +221,7 @@ spec:
         # - name: HTTP_ENABLE
         #   value: "true"
         - name: "NETWORK_HOST"
-          value: "10.0.1.66"
+          value: "10.0.1.67"
         - name: bootstrap_memory_lock
           value: "false"
           #^ unless ulimits for "memlock" can be set via kubernetes
@@ -298,7 +298,7 @@ spec:
           - name: "CLUSTER_NAME"
           value: "kubernetes-cluster"
           - name: "SERVER_HOST"
-          value: "10.0.1.66"
+          value: "10.0.1.67"
           - name: "ELASTICSEARCH_URL"
           value: "http://localhost:9200"
           - name: XPACK_SECURITY_ENABLED
