@@ -20,6 +20,9 @@ spec:
             cpu: 100m
           requests:
             cpu: 100m
+        volumeMounts:
+        - name: config
+          mountPath: /usr/share/kibana/config
         env:
         - name: "CLUSTER_NAME"
           value: "kubernetes-cluster"
