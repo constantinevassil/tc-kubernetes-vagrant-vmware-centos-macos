@@ -31,11 +31,11 @@ spec:
         - containerPort: 5601
           name: ui
           protocol: TCP
-        volumeMounts:
+       volumeMounts:
         - name: config
           mountPath: /usr/share/kibana/config
        volumes:
-      - name: config
-        configMap:
+        - name: config
+          configMap:
           name: kibana
  
