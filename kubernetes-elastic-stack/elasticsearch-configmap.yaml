@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: elasticsearch
-  namespace: logging
+  #namespace: logging
 data:
   elasticsearch.yml: |
     cluster.name: ${cluster_name}
