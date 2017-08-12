@@ -40,4 +40,10 @@ sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-
 sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/kubernetes-elastic-stack/kibana-service.yaml
 ```
 
+### get pods
+
+```bash
+kubectl get pods --all-namespaces
+```
+
 
