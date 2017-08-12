@@ -26,7 +26,8 @@ spec:
     spec:
       containers:
       - name: elasticsearch
-        image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
+        image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+        # image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
         # image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
         # image: docker.elastic.co/elasticsearch/elasticsearch:6.0.0-alpha1
         imagePullPolicy: IfNotPresent
@@ -34,6 +35,10 @@ spec:
         env:
         - name: cluster_name
           value: kubernetes-cluster
+        - name: "NUMBER_OF_MASTERS"
+          value: "1"
+        - name: "NETWORK_HOST"
+          value: "10.0.1.67"
         - name: bootstrap_memory_lock
           value: "false"
           #^ unless ulimits for "memlock" can be set via kubernetes
@@ -44,6 +49,8 @@ spec:
         #   value: elasticsearch_other
         # - name: "ES_JAVA_OPTS"
         #   value: "-Xms1g -Xmx1g"
+        - name: "ES_JAVA_OPTS"
+          value: "-Xms512m -Xms512m"
         ports:
         - containerPort: 9200
           name: api
