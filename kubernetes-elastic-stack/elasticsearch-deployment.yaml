@@ -105,6 +105,6 @@ spec:
       #- name: config
       #  configMap:
       #    name: elasticsearch
-      - name: "data"
-        emptyDir:
-          medium: ""
+      #- name: "data"
+      #  emptyDir:
+      #    medium: ""
