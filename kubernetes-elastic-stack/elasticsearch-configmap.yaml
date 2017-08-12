@@ -38,8 +38,8 @@ data:
     # Xms represents the initial size of total heap space
     # Xmx represents the maximum size of total heap space
 
-    -Xms2g
-    -Xmx2g
+    #-Xms2g
+    #-Xmx2g
 
     ################################################################
     ## Expert settings
@@ -52,17 +52,17 @@ data:
     ################################################################
 
     ## GC configuration
-    -XX:+UseConcMarkSweepGC
-    -XX:CMSInitiatingOccupancyFraction=75
-    -XX:+UseCMSInitiatingOccupancyOnly
+    #-XX:+UseConcMarkSweepGC
+    #-XX:CMSInitiatingOccupancyFraction=75
+    #-XX:+UseCMSInitiatingOccupancyOnly
 
     ## optimizations
 
     # disable calls to System#gc
-    -XX:+DisableExplicitGC
+    #-XX:+DisableExplicitGC
 
     # pre-touch memory pages used by the JVM during initialization
-    -XX:+AlwaysPreTouch
+    #-XX:+AlwaysPreTouch
 
     ## basic
 
@@ -73,21 +73,21 @@ data:
     -Xss1m
 
     # set to headless, just in case
-    -Djava.awt.headless=true
+    #-Djava.awt.headless=true
 
     # ensure UTF-8 encoding by default (e.g. filenames)
     -Dfile.encoding=UTF-8
 
     # use our provided JNA always versus the system one
-    -Djna.nosys=true
+    #-Djna.nosys=true
 
     # use old-style file permissions on JDK9
     -Djdk.io.permissionsUseCanonicalPath=true
 
     # flags to configure Netty
-    -Dio.netty.noUnsafe=true
-    -Dio.netty.noKeySetOptimization=true
-    -Dio.netty.recycler.maxCapacityPerThread=0
+    #-Dio.netty.noUnsafe=true
+    #-Dio.netty.noKeySetOptimization=true
+    #-Dio.netty.recycler.maxCapacityPerThread=0
 
     # log4j 2
     -Dlog4j.shutdownHookEnabled=false
