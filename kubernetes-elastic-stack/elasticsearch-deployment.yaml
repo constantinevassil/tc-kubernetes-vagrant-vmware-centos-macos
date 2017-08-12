@@ -45,6 +45,8 @@ spec:
           value: "1"
         - name: "NETWORK_HOST"
           value: "10.0.1.67"
+        - name: XPACK_SECURITY_ENABLED
+          value: 'false'
         #- name: NODE_MASTER
         #  value: "true"
         #- name: NODE_INGEST
