@@ -1,3 +1,6 @@
+# https://www.elastic.co/guide/en/kibana/current/_configuring_kibana_on_docker.html
+# Setting Kibana Server Properties
+# https://www.elastic.co/guide/en/kibana/4.2/kibana-server-properties.html
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
