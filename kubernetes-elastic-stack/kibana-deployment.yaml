@@ -31,3 +31,11 @@ spec:
         - containerPort: 5601
           name: ui
           protocol: TCP
+        volumeMounts:
+        - name: config
+          mountPath: /usr/share/elasticsearch/config
+       volumes:
+      - name: config
+        configMap:
+          name: elasticsearch
+ 
