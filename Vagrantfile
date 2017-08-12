@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "tc-centos-master-hatc2"
  
   config.vm.provider "vmware_fusion" do |v|
-      v.memory = 2048
+      v.memory = 4096
       v.cpus = 2
       v.gui = true
       v.name = "tc-centos-master-hatc2"
