@@ -21,6 +21,10 @@ spec:
           requests:
             cpu: 100m
         env:
+        - name: "CLUSTER_NAME"
+          value: "kubernetes-cluster"
+        - name: "SERVER_HOST"
+          value: "10.0.1.67"
         - name: "ELASTICSEARCH_URL"
           value: "http://elasticsearch:9200"
         ports:
