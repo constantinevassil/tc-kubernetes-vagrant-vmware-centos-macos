@@ -25,8 +25,8 @@ systemctl enable kubelet && systemctl start kubelet
 sysctl net.bridge.bridge-nf-call-iptables=1
 sysctl net.bridge.bridge-nf-call-ip6tables=1
 
-echo "192.168.0.199	tc-centos-master-hatc2" >> /etc/hosts
-kubeadm init --apiserver-advertise-address 192.168.0.199 --pod-network-cidr 10.244.0.0/16 --token 8c2350.f55343444a6ffc46
+echo "10.0.1.66	tc-centos-master-hatc2" >> /etc/hosts
+kubeadm init --apiserver-advertise-address 10.0.1.66 --pod-network-cidr 10.244.0.0/16 --token 8c2350.f55343444a6ffc46
 
 sudo mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -63,7 +63,9 @@ do
 	echo -n ".";
 	sleep 1;
 	((n++));
-doneecho "Install Heapster."
+done
+
+echo "Install Heapster."
 kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/heapster/deploy/kube-config/influxdb/heapster.yaml
 echo "Now I will sleep for 30 seconds."
 n=0
@@ -72,7 +74,9 @@ do
 	echo -n ".";
 	sleep 1;
 	((n++));
-doneecho "Install Influxdb."
+done
+
+echo "Install Influxdb."
 kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/heapster/deploy/kube-config/influxdb/influxdb.yaml
 kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/heapster/deploy/kube-config/rbac/heapster-rbac.yaml
 echo "Now I will sleep for 30 seconds."
@@ -83,6 +87,7 @@ do
 	sleep 1;
 	((n++));
 done
+
 echo "Install Weave Scope."
 kubectl apply --namespace kube-system -f "https://cloud.weave.works/k8s/scope.yaml?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 echo "Now I will sleep for 30 seconds."
