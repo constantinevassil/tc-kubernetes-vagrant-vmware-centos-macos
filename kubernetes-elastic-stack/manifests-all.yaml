@@ -11,14 +11,13 @@ metadata:
   name: elasticsearch
   namespace: logging
 data:
-  # https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
   elasticsearch.yml: |
     cluster.name: ${cluster_name}
-     # network.host: 0.0.0.0
+    # network.host: 0.0.0.0
 
-     # minimum_master_nodes need to be explicitly set when bound on a public IP
-     # set to 1 to allow single node clusters
-     # Details: https://github.com/elastic/elasticsearch/pull/17288
+    # minimum_master_nodes need to be explicitly set when bound on a public IP
+    # set to 1 to allow single node clusters
+    # Details: https://github.com/elastic/elasticsearch/pull/17288
     discovery.zen.minimum_master_nodes: 1
 
     bootstrap.memory_lock: ${bootstrap_memory_lock}
@@ -60,14 +59,14 @@ data:
     ################################################################
 
     ## GC configuration
-    #-XX:+UseConcMarkSweepGC
-    #-XX:CMSInitiatingOccupancyFraction=75
-    #-XX:+UseCMSInitiatingOccupancyOnly
+    -XX:+UseConcMarkSweepGC
+    -XX:CMSInitiatingOccupancyFraction=75
+    -XX:+UseCMSInitiatingOccupancyOnly
 
     ## optimizations
 
     # disable calls to System#gc
-    #-XX:+DisableExplicitGC
+    -XX:+DisableExplicitGC
 
     # pre-touch memory pages used by the JVM during initialization
     -XX:+AlwaysPreTouch
