@@ -10,6 +10,10 @@ Vagrant.configure("2") do |config|
   #config.vm.provision :shell, path: "bootstrap.sh"
   config.vm.hostname = "tc-centos-master-hatc2"
  
+   # port forwarding
+  config.vm.network "forwarded_port", guest: 9200, host: 9201 # ES
+  config.vm.network "forwarded_port", guest: 5601, host: 5602 # Kibana
+
   config.vm.provider "vmware_fusion" do |v|
       v.memory = 4096
       v.cpus = 2
