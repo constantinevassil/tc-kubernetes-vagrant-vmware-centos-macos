@@ -2,7 +2,9 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: elasticsearch
-  #namespace: logging
+  labels:
+    component: elasticsearch
+    role: master
 spec:
   replicas: 1
   template:
@@ -10,28 +12,14 @@ spec:
       labels:
         component: elasticsearch
         role: master
-      # annotations:
-      #   # see https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
-      #   # and https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html#mlockall
-      #   pod.beta.kubernetes.io/init-containers: '[
-      #     {
-      #     "name": "sysctl",
-      #       "image": "busybox",
-      #       "imagePullPolicy": "IfNotPresent",
-      #       "command": ["sysctl", "-w", "vm.max_map_count=262144"],
-      #       "securityContext": {
-      #         "privileged": true
-      #       }
-      #     }
-      #   ]'
     spec:
-      #initContainers:
-      #- name: init-sysctl
-      #  image: busybox
-      #  imagePullPolicy: IfNotPresent
-      #  command: ["sysctl", "-w", "vm.max_map_count=262144"]
-      #  securityContext:
-      #    privileged: true
+      initContainers:
+      - name: init-sysctl
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ["sysctl", "-w", "vm.max_map_count=262144"]
+        securityContext:
+          privileged: true
       containers:
       - name: elasticsearch
         securityContext:
@@ -40,72 +28,44 @@ spec:
             add:
               - IPC_LOCK
               - SYS_RESOURCE
-        image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
-        #image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+        image: quay.io/pires/docker-elasticsearch-kubernetes:5.5.1
         imagePullPolicy: Always
-        # workarounds until https://github.com/kubernetes/kubernetes/issues/30120
         env:
-        # https://github.com/pires/docker-elasticsearch
-        # - name: cluster_name
-        #   value: kubernetes-cluster
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
         - name: "CLUSTER_NAME"
           value: "kubernetes-cluster"
         - name: "NUMBER_OF_MASTERS"
           value: "1"
-        # enabled by default
-        # - name: NODE_MASTER
-        #   value: "true"
-        # - name: NODE_INGEST
-        #   value: "false"
-        # - name: NODE_DATA
-        #   value: "true"
-        # - name: HTTP_ENABLE
-        #   value: "true"
         - name: "NETWORK_HOST"
           value: "10.0.1.67"
-        - name: bootstrap_memory_lock
-          value: "false"
-          #^ unless ulimits for "memlock" can be set via kubernetes
-          # see https://github.com/kubernetes/kubernetes/issues/3595
-        # - name: transport.host
-        #   value: 127.0.0.1
-        # - name: discovery.zen.ping.unicast.hosts
-        #   value: elasticsearch_other
-        #- name: "ES_JAVA_OPTS"
-        #  value: "-Xms1g -Xmx1g"
+        #- name: NODE_MASTER
+        #  value: "true"
+        #- name: NODE_INGEST
+        #  value: "false"
+        #- name: NODE_DATA
+        #  value: "false"
+        #- name: HTTP_ENABLE
+        #  value: "false"
         - name: "ES_JAVA_OPTS"
-          value: "-Xms512m -Xms512m"
+          value: "-Xms256m -Xmx256m"
         ports:
         - containerPort: 9200
           name: api
           protocol: TCP
-        # - containerPort: 9300
-        #   name: transport
-        #   protocol: TCP
-        resources:
-          # keep request = limit to keep this container in guaranteed class
-          limits:
-            cpu: 1000m
-            memory: 2G
-          requests:
-            cpu: 1000m
-            memory: 1G
-        securityContext:
-          privileged: true
-          capabilities:
-            add:
-            - IPC_LOCK
-            - SYS_RESOURCE
-        # FIXME add probes
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
         volumeMounts:
-        - name: config
-          mountPath: /usr/share/elasticsearch/config
-        - name: data
-          mountPath: /usr/share/elasticsearch/data
+        - name: storage
+          mountPath: /data
       volumes:
-      #- name: config
-      #  configMap:
-      #    name: elasticsearch
-      - name: "data"
-        emptyDir:
-          medium: ""
+          - emptyDir:
+              medium: ""
+            name: "storage"
