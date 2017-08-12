@@ -22,7 +22,6 @@ data:
 
     bootstrap.memory_lock: ${bootstrap_memory_lock}
     xpack.security.enabled: false
-
   jvm.options: |
     ## JVM configuration
 
@@ -131,7 +130,6 @@ data:
     # WARNING: This option will be removed in Elasticsearch 6.0.0 and is provided
     # only for migration purposes.
     #-Delasticsearch.json.allow_unquoted_field_names=true
-
   log4j2.properties: |
     status = error
 
