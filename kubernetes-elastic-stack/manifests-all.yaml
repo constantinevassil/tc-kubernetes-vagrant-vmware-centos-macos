@@ -13,8 +13,8 @@ metadata:
 data:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
   elasticsearch.yml: |
-    cluster.name: ${cluster_name}
-    # network.host: 192.168.0.198
+     cluster.name: ${cluster_name}
+    # network.host: 0.0.0.0
 
     # minimum_master_nodes need to be explicitly set when bound on a public IP
     # set to 1 to allow single node clusters
@@ -154,7 +154,7 @@ metadata:
 data:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
   kibana.yml: |
-    cluster.name: ${cluster_name}
+     cluster.name: ${cluster_name}
     server.host: ${SERVER_HOST}
     elasticsearch.url: ${ELASTICSEARCH_URL}
 ---
