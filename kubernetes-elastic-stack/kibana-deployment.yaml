@@ -33,9 +33,9 @@ spec:
           protocol: TCP
         volumeMounts:
         - name: config
-          mountPath: /usr/share/elasticsearch/config
+          mountPath: /usr/share/kibana/config
        volumes:
       - name: config
         configMap:
-          name: elasticsearch
+          name: kibana
  
