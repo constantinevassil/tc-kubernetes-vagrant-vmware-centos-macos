@@ -34,3 +34,8 @@ spec:
         - containerPort: 5601
           name: ui
           protocol: TCP
+      volumes:
+      - name: config
+        configMap:
+          name: kibana
+
