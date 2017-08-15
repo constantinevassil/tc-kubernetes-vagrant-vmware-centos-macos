@@ -3,36 +3,36 @@
 ## es-statefulset
 
 ```bash
-https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/es-statefulset.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/es-statefulset.yaml
 ```
 
 ## es-service
 
 ```bash
-https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/es-service.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/es-service.yaml
 ```
 
 ## kibana-deployment
 
 ```bash
-https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/kibana-deployment.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/kibana-deployment.yaml
 ```
 
 ## kibana-service
 
 ```bash
-https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/kibana-service.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/kibana-service.yaml
 ```
 
 ## fluentd-es-configmap
 
 ```bash
-https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/fluentd-es-configmap.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/fluentd-es-configmap.yaml
 ```
 
 ## fluentd-es-ds
 
 ```bash
-https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/fluentd-es-ds.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/fluentd-es-ds.yaml
 ```
 
