@@ -1,4 +1,4 @@
-* ELK stack on Kubernetes
+# ELK stack on Kubernetes
 
 ```bash
 sudo kubectl apply --filename kubefiles/elasticsearch-deployment.yaml
