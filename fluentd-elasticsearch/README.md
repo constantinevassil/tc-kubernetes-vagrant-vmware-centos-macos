@@ -29,3 +29,9 @@ https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-cent
 https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/fluentd-es-configmap.yaml
 ```
 
+## fluentd-es-ds
+
+```bash
+https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/fluentd-es-ds.yaml
+```
+
