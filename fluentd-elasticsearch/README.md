@@ -17,4 +17,10 @@ https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-cent
 https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/kibana-deployment.yaml
 ```
 
+## kibana-service
+
+```bash
+https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/kibana-service.yaml
+```
+
 
