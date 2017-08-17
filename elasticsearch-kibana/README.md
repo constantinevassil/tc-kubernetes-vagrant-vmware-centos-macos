@@ -3,7 +3,7 @@
 ## es-statefulset
 
 ```bash
-sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/es-statefulset.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/es-statefulset.yaml
 ```
 
 ## es-service
