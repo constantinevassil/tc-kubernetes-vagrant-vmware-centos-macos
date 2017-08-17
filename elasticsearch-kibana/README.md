@@ -3,24 +3,24 @@
 ## es-statefulset
 
 ```bash
-sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/es-statefulset.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/es-statefulset.yaml
 ```
 
 ## es-service
 
 ```bash
-sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/es-service.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/es-service.yaml
 ```
 
 ## kibana-deployment
 
 ```bash
-sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/kibana-deployment.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/kibana-deployment.yaml
 ```
 
 ## kibana-service
 
 ```bash
-sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/fluentd-elasticsearch/kibana-service.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/kibana-service.yaml
 ```
 
