@@ -15,12 +15,12 @@ sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-
 ## kibana-deployment
 
 ```bash
-sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/kibana-deployment.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/kibana-deployment.yaml
 ```
 
 ## kibana-service
 
 ```bash
-sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/kibana-service.yaml
+sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/kibana-service.yaml
 ```
 
