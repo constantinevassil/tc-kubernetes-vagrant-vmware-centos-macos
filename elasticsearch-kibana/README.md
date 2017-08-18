@@ -46,6 +46,35 @@ kube-system   monitoring-influxdb     10.103.99.69     <none>        8086/TCP   
 kube-system   weave-scope-app         10.107.82.4      <none>        80/TCP           13d
 ```
 
+```bash
+[vagrant@tc-centos-master-hatc2 vagrant2]$ kubectl describe nodes
+...
+Addresses:
+  InternalIP:	192.168.0.199
+  Hostname:	tc-centos-master-hatc2
+...
+```
+Node IP: 192.168.0.199
+
+Service Port:32708
+
+```bash
+[vagrant@tc-centos-master-hatc2 vagrant2]$ curl 192.168.0.199:32708
+{
+  "name" : "elasticsearch-logging-1",
+  "cluster_name" : "kubernetes-logging",
+  "cluster_uuid" : "LEV0A5EmT66_XBPrhtQXhg",
+  "version" : {
+    "number" : "5.5.1",
+    "build_hash" : "19c13d0",
+    "build_date" : "2017-07-18T20:44:24.823Z",
+    "build_snapshot" : false,
+    "lucene_version" : "6.6.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
 ## kibana-deployment
 
 ```bash
