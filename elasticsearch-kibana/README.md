@@ -33,6 +33,19 @@ kube-system   weave-scope-app-2536107919-tcbmc                 1/1       Running
 sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/es-service.yaml
 ```
 
+```bash
+[vagrant@tc-centos-master-hatc2 vagrant2]$ kubectl get svc --all-namespaces
+NAMESPACE     NAME                    CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+default       kubernetes              10.96.0.1        <none>        443/TCP          13d
+kube-system   elasticsearch-logging   10.109.121.45    <nodes>       9200:32708/TCP   12s
+kube-system   heapster                10.109.144.228   <none>        80/TCP           13d
+kube-system   kube-dns                10.96.0.10       <none>        53/UDP,53/TCP    13d
+kube-system   kubernetes-dashboard    10.97.176.22     <none>        80/TCP           13d
+kube-system   monitoring-grafana      10.105.154.143   <nodes>       80:31045/TCP     13d
+kube-system   monitoring-influxdb     10.103.99.69     <none>        8086/TCP         13d
+kube-system   weave-scope-app         10.107.82.4      <none>        80/TCP           13d
+```
+
 ## kibana-deployment
 
 ```bash
