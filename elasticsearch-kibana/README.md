@@ -10,8 +10,6 @@ sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-
 [vagrant@tc-centos-master-hatc2 vagrant2]$ kubectl get pods --all-namespaces
 [vagrant@tc-centos-master-hatc2 vagrant2]$ kubectl get pods --all-namespaces
 NAMESPACE     NAME                                             READY     STATUS    RESTARTS   AGE
-default       tc-helloworld-go-ws-1724924830-8w14j             1/1       Running   0          13d
-default       tc-helloworld-go-ws-1724924830-c598s             1/1       Running   0          13d
 kube-system   elasticsearch-logging-0                          1/1       Running   0          1m
 kube-system   elasticsearch-logging-1                          1/1       Running   0          33s
 kube-system   etcd-tc-centos-master-hatc2                      1/1       Running   0          13d
