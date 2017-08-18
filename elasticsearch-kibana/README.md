@@ -87,3 +87,33 @@ sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-
 sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/kibana-service.yaml
 ```
 
+```bash
+[vagrant@tc-centos-master-hatc2 ~]$ kubectl get svc --all-namespaces
+NAMESPACE     NAME                    CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+default       kubernetes              10.96.0.1        <none>        443/TCP          6h
+kube-system   elasticsearch-logging   10.103.188.191   <nodes>       9200:32168/TCP   6h
+kube-system   heapster                10.100.137.219   <none>        80/TCP           6h
+kube-system   kibana-logging          10.98.145.221    <nodes>       5601:31173/TCP   43s
+kube-system   kube-dns                10.96.0.10       <none>        53/UDP,53/TCP    6h
+kube-system   kubernetes-dashboard    10.101.68.91     <none>        80/TCP           6h
+kube-system   monitoring-grafana      10.104.94.79     <nodes>       80:32354/TCP     6h
+kube-system   monitoring-influxdb     10.102.173.136   <none>        8086/TCP         6h
+kube-system   weave-scope-app         10.110.64.204    <none>        80/TCP           6h
+```
+
+Node IP: 192.168.0.199
+
+Service Port:31173
+
+```bash
+curl 192.168.0.199:31173
+<script>var hashRoute = '/app/kibana';
+var defaultRoute = '/app/kibana';
+
+var hash = window.location.hash;
+if (hash.length) {
+  window.location = hashRoute + hash;
+} else {
+  window.location = defaultRoute;
+```
+  
