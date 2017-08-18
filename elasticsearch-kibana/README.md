@@ -6,6 +6,10 @@
 sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/es-statefulset.yaml
 ```
 
+```bash
+kubectl get pods --all-namespaces
+```
+
 ## es-service
 
 ```bash
