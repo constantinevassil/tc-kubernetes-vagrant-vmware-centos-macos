@@ -8,7 +8,6 @@ sudo kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-
 
 ```bash
 [vagrant@tc-centos-master-hatc2 vagrant2]$ kubectl get pods --all-namespaces
-[vagrant@tc-centos-master-hatc2 vagrant2]$ kubectl get pods --all-namespaces
 NAMESPACE     NAME                                             READY     STATUS    RESTARTS   AGE
 kube-system   elasticsearch-logging-0                          1/1       Running   0          1m
 kube-system   elasticsearch-logging-1                          1/1       Running   0          33s
