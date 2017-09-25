@@ -75,6 +75,11 @@ kubeadm init --apiserver-advertise-address 192.168.0.199 --pod-network-cidr 10.2
 
 ## Enabling shared folders with Vagrant’s VMware provider
 
+NOTE: 
+There is a new configuration added to Vagrantfile by using NFS and explicitly disabling HGFS in my Vagrantfile.
+There is no need for shared.sh anymore.
+
+This info is for alternative way:
 Updated CentOS Vagrant Images Available (v1708.01)
 https://seven.centos.org/2017/09/updated-centos-vagrant-images-available-v1708-01/
 
