@@ -21,8 +21,13 @@ Vagrant.configure("2") do |config|
       v.name = "tc-centos-master-hatc2"
       v.vmx["ethernet0.pcislotnumber"] = "32"
   	  v.vmx["ethernet1.pcislotnumber"] = "33"
+      v.functional_hgfs = false
     end
   
+  config.vm.communicator = "ssh"
+  config.vm.synced_folder "", "/vagrant", type: "nfs"
+  config.vm.synced_folder (File.expand_path '~'), "/home/vagrant/host", type: "nfs"
+
   # config.vm.synced_folder ".", "/vagrant2"
 
 
