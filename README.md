@@ -431,15 +431,31 @@ tc-helloworld-go-ws   10.105.98.177   <nodes>       8080:30947/TCP   11h
 ```
 ### On local machine
 
-Run proxy to use dashboard locally:
-
-```bash
-kubectl proxy
 ```
+kubectl -n kube-system get secret
+replicaset-controller-token-k4wjz        kubernetes.io/service-account-token   3         15h
 
-Proxy should be listening on 127.0.0.1:8001. 
+kubectl -n kube-system describe secret replicaset-controller-token-k4wjz
+Name:		replicaset-controller-token-k4wjz
+Namespace:	kube-system
+Labels:		<none>
+Annotations:	kubernetes.io/service-account.name=replicaset-controller
+		kubernetes.io/service-account.uid=ba4d8e98-a257-11e7-beda-000c29912ea8
 
-Point your browser to http://127.0.0.1:8001/ui
+Type:	kubernetes.io/service-account-token
+
+Data
+====
+ca.crt:		1025 bytes
+namespace:	11 bytes
+token:		eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJyZXBsaWNhc2V0LWNvbnRyb2xsZXItdG9rZW4tazR3anoiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoicmVwbGljYXNldC1jb250cm9sbGVyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYmE0ZDhlOTgtYTI1Ny0xMWU3LWJlZGEtMDAwYzI5OTEyZWE4Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOnJlcGxpY2FzZXQtY29udHJvbGxlciJ9.0osjLlCX--yQN_PufECPmETK0ALNKeGyG25bTLd4KjRR8Ry003ErvnXM0aBu4UvSpdfhHZSjav-8V5PWW9CLH4pwO3iVwKIuQs2Nd48WPJZp-z9Ex2uorCl6qrP7-dNRKnQphZM-KF3Ap8h1IwHnSasuBxeM0T3pbGOGubweE8OEm4qp4vsh-MPOrJzjcRRy0FGPCye8JUtq1Xu01R6QiuvVGGdNfCj1l1-7_eiBqVnEkGDcOxBiOL-07vMGlzaY2NQrlS5ZfVV-axpi00jg-qVRzLFhuoGHnNxMyVvcBKLgXrMtLuEyDOZ95Xf0mh7FIemhupoiTg2hhBO0Qrlw4w
+
+We can now use printed token to log in to Dashboard. 
+
+kubectl proxy
+Dashboard is now available at 
+http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+
 
 Access the service from local machine:
 
