@@ -429,7 +429,9 @@ NAME                  CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 kubernetes            10.96.0.1       <none>        443/TCP          11h
 tc-helloworld-go-ws   10.105.98.177   <nodes>       8080:30947/TCP   11h
 ```
-### On local machine
+## On local machine
+
+### Accessing Dashboard
 
 ```
 kubectl -n kube-system get secret
@@ -463,7 +465,7 @@ Access the service from local machine:
 curl http://192.168.232.137:30947
 ```
 
-Open Scope in Your Browser
+### Open Scope in Your Browser
 
 ```bash
 kubectl port-forward -n kube-system "$(kubectl get -n kube-system pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}')" 4040
