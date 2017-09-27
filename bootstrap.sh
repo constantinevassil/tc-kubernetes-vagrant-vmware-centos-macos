@@ -98,6 +98,48 @@ do
 	sleep 1;
 	((n++));
 done
+
+echo "es-statefulset"
+kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/es-statefulset.yaml
+echo "Now I will sleep for 30 seconds."
+n=0
+while (( $n <= 30 ));
+do
+	echo -n ".";
+	sleep 1;
+	((n++));
+done
+echo "es-service"
+kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/es-service.yaml
+echo "Now I will sleep for 30 seconds."
+n=0
+while (( $n <= 30 ));
+do
+	echo -n ".";
+	sleep 1;
+	((n++));
+done
+echo "kibana-deployment"
+kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/kibana-deployment.yaml
+echo "Now I will sleep for 30 seconds."
+n=0
+while (( $n <= 30 ));
+do
+	echo -n ".";
+	sleep 1;
+	((n++));
+done
+echo "kibana-service"
+kubectl apply --filename https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/elasticsearch-kibana/kibana-service.yaml
+echo "Now I will sleep for 30 seconds."
+n=0
+while (( $n <= 30 ));
+do
+	echo -n ".";
+	sleep 1;
+	((n++));
+done
+
 #--- Do this manually
     
 #  ---   
