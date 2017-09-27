@@ -13,10 +13,6 @@ kubectl get deployments
 ```
 
 ```bash
-kubectl create -f jenkins-service.yaml
-```
-
-```bash
 kubectl create -f https://raw.githubusercontent.com/topconnector/tc-kubernetes-vagrant-vmware-centos-macos/master/jenkins/jenkins-service.yaml
 ```
 
