@@ -11,3 +11,7 @@ To validate that creating the deployment was successful you can invoke:
 ```bash
 kubectl get deployments
 ```
+
+```bash
+kubectl create -f jenkins-service.yaml
+```
